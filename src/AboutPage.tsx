@@ -10,6 +10,10 @@ class AboutPage extends React.Component<IProps, IState>{
 		super(props);
 	}
 
+	componentDidMount() {
+		document.title = "About - Projectory";
+	}
+
 	render() {
 		return (
 			<main>

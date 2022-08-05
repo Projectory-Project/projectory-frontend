@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
 
 const HomePage = () => {
+	useEffect(() => {
+		document.title = "Projectory";
+	});
 	return (
 		<main>
 			<h1>Projectory</h1>
