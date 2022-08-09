@@ -33,6 +33,7 @@ class LoginPage extends React.Component<IProps, IState>{
 
 		fetch("http://localhost:8080/testlogin", {
 			method: 'POST',
+			credentials: "include",
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
@@ -43,6 +44,7 @@ class LoginPage extends React.Component<IProps, IState>{
 		}).then(response => {
 			if (response.status == 200) {
 				alert("Login success");
+				fetch("http://localhost:8080/user", { credentials: "include" }).then(response => { return response.text() }).then(text => console.log(text))
 			} else {
 				alert("Login fail");
 			}
