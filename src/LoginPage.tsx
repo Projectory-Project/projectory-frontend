@@ -24,14 +24,14 @@ class LoginPage extends React.Component<IProps, IState>{
 	}
 
 
-	componentDidMount () {
+	componentDidMount() {
 		document.body.className = "justify-content-center";
 	}
 
 	form_submit() {
 		console.log("submit " + this.state.email + " " + this.state.password);
 
-		fetch("http://localhost:8080/auth/login", {
+		fetch("http://localhost:8080/testlogin", {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
@@ -40,14 +40,20 @@ class LoginPage extends React.Component<IProps, IState>{
 				'username': this.state.email,
 				'password': this.state.password
 			})
+		}).then(response => {
+			if (response.status == 200) {
+				alert("Login success");
+			} else {
+				alert("Login fail");
+			}
 		});
 	}
 
 	render() {
 		return (
-			
+
 			<main className="form-signin w-100 m-auto" style={{ textAlign: 'center' }}>
-				
+
 				<img src='favicon.ico' alt="logo" width={100} height={100}></img>
 				<br></br><br></br>
 				<h1 className="h3 mb-3 fw-normal">Please sign in</h1>
@@ -74,7 +80,7 @@ class LoginPage extends React.Component<IProps, IState>{
 				<small>
 					Don't have an account? &nbsp;
 					<a className="text-muted" href="/signup" style={{ textDecoration: "underline" }}>Sign Up</a>
-					
+
 				</small>
 
 				<br></br>
