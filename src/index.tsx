@@ -5,6 +5,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage'
 import LoginPage from './LoginPage'
+import SignupPage from './SignupPage'
 
 const App = () => {
 	return (
@@ -13,6 +14,7 @@ const App = () => {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/login" element={<LoginPage />} />
+				<Route path="/signup" element={<SignupPage />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>

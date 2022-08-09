@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent } from 'react'
+import 'bootstrap/dist/css/bootstrap.css'
 import './login.css'
 
 interface IProps {}
@@ -9,6 +10,9 @@ interface IState {
 	remember: boolean;
 }
 
+
+
+
 class LoginPage extends React.Component<IProps, IState>{
 	constructor(props: IProps) {
 		super(props);
@@ -17,6 +21,11 @@ class LoginPage extends React.Component<IProps, IState>{
 			password: "",
 			remember: false
 		}
+	}
+
+
+	componentDidMount () {
+		document.body.className = "justify-content-center";
 	}
 
 	form_submit() {
@@ -36,8 +45,11 @@ class LoginPage extends React.Component<IProps, IState>{
 
 	render() {
 		return (
-			<main className="form-signin w-100 m-auto">
-
+			
+			<main className="form-signin w-100 m-auto" style={{ textAlign: 'center' }}>
+				
+				<img src='favicon.ico' alt="logo" width={100} height={100}></img>
+				<br></br><br></br>
 				<h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
 				<div className="form-floating">
@@ -53,20 +65,23 @@ class LoginPage extends React.Component<IProps, IState>{
 
 				<div className="checkbox mb-3">
 					<label>
-						<input type="checkbox" value="remember-me" />
+						<input type="checkbox" value="remember-me" /> Remember me
 					</label>
 				</div>
 				<button className="w-100 btn btn-lg btn-primary" id="login" type="submit" onClick={this.form_submit.bind(this)}>Sign in</button>
 
 
 				<small>
-					Don't have an account?
-					<a className="text-muted" href="/signup.html">Sign Up</a>
+					Don't have an account? &nbsp;
+					<a className="text-muted" href="/signup" style={{ textDecoration: "underline" }}>Sign Up</a>
+					
 				</small>
 
+				<br></br>
+
 				<small>
-					Or, return to
-					<a className="text-muted" href="/index.html">home page</a>
+					Or, return to &nbsp;
+					<a className="text-muted" href="/" style={{ textDecoration: "underline" }}>Home Page</a>
 				</small>
 
 			</main>
