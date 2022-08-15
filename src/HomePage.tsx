@@ -9,6 +9,7 @@ const HomePage = () => {
 		<main>
 			<h1>Projectory</h1>
 			<h3>A web based task tracker</h3>
+			<Link to="/login">Login</Link>
 			<Link to="/about">About</Link>
 		</main>
 	);

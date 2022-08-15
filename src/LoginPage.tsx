@@ -29,7 +29,7 @@ class LoginPage extends React.Component<IProps, IState>{
 	}
 
 	form_submit() {
-		fetch("http://localhost:8080/testlogin", {
+		fetch("http://localhost:8080/auth/login", {
 			method: 'POST',
 			credentials: "include",
 			headers: {
@@ -42,7 +42,8 @@ class LoginPage extends React.Component<IProps, IState>{
 		}).then(response => {
 			if (response.status == 200) {
 				alert("Login success");
-				fetch("http://localhost:8080/user", { credentials: "include" }).then(response => { return response.text() }).then(text => alert("You are " + text))
+				fetch("http://localhost:8080/users/user", { credentials: "include" }).then(response => { return response.text() }).then(text => alert("You are " + text))
+				window.location.replace("http://localhost:3000/projects");
 			} else {
 				alert("Login fail");
 			}
