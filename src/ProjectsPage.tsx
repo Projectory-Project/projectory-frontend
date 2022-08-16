@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button'
 
 interface IProps {}
 interface IState {
@@ -15,19 +16,31 @@ class ProjectsPage extends React.Component<IProps, IState> {
 		document.title = "Projects - Projectory";
 		fetch("http://localhost:8080/users/user", { credentials: "include" }).then(response => {
 			if (response.status != 200) {
-				window.location.replace("http://localhost:3000/login")
+				window.location.replace("/login")
 			} else {
-				return response.text();
+				return response.json();
 			}
-		}).then(text => {
-			if (text) {
-				this.setState({ current_user: text });
-			}
+		}).then(json => {
+			this.setState({ current_user: json.user });
+		});
+	}
+
+	logout() {
+		fetch("http://localhost:8080/auth/logout", {
+			method: 'POST',
+			credentials: "include"
+		}).then(response => {
+			window.location.replace("/");
 		});
 	}
 
 	render() {
-		return <h1>Current User: {this.state.current_user}</h1>
+		return (
+			<main>
+				<h1>Current User: {this.state.current_user}</h1>
+				<Button variant="outline-primary" onClick={this.logout}>Log out</Button>
+			</main>
+		);
 	}
 }
 

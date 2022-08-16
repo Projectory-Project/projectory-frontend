@@ -43,7 +43,7 @@ class LoginPage extends React.Component<IProps, IState>{
 			if (response.status == 200) {
 				alert("Login success");
 				fetch("http://localhost:8080/users/user", { credentials: "include" }).then(response => { return response.text() }).then(text => alert("You are " + text))
-				window.location.replace("http://localhost:3000/projects");
+				window.location.replace("/projects");
 			} else {
 				alert("Login fail");
 			}
