@@ -37,7 +37,8 @@ class ProjectsPage extends React.Component<IProps, IState> {
 	render() {
 		return (
 			<main>
-				<h1>Current User: {this.state.current_user}</h1>
+				<h1>Projects:</h1>
+				<h4>Current User: {this.state.current_user}</h4>
 				<Button variant="outline-primary" onClick={this.logout}>Log out</Button>
 			</main>
 		);

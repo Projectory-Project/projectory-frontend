@@ -25,7 +25,7 @@ class LoginPage extends React.Component<IProps, IState>{
 
 
 	componentDidMount() {
-		document.body.className = "justify-content-center";
+		document.body.className = "justify-content-center login-body";
 	}
 
 	form_submit() {
