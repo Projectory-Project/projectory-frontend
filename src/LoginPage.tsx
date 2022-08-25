@@ -10,9 +10,6 @@ interface IState {
 	remember: boolean;
 }
 
-
-
-
 class LoginPage extends React.Component<IProps, IState>{
 	constructor(props: IProps) {
 		super(props);
@@ -40,7 +37,7 @@ class LoginPage extends React.Component<IProps, IState>{
 				'password': this.state.password
 			})
 		}).then(response => {
-			if (response.status == 200) {
+			if (response.status === 200) {
 				alert("Login success");
 				fetch("http://localhost:8080/users/user", { credentials: "include" }).then(response => { return response.text() }).then(text => alert("You are " + text))
 				window.location.replace("/projects");

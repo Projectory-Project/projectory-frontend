@@ -88,7 +88,7 @@ class SignupPage extends React.Component<IProps, IState> {
 				'password': this.state.password
 			})
 		}).then(response => {
-			if (response.status == 200) {
+			if (response.status === 200) {
 				alert("Signup success");
 			} else {
 				alert("Signup fail");
