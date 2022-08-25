@@ -4,9 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage'
-import LoginPage from './LoginPage'
-import SignupPage from './SignupPage'
-import ProjectsPage from './ProjectsPage'
+import LoginPage from './auth/LoginPage'
+import SignupPage from './auth/SignupPage'
+import ProjectsPage from './projects/ProjectsPage'
 
 const App = () => {
 	return (
