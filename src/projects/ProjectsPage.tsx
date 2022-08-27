@@ -1,10 +1,14 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import { Link } from 'react-router-dom'
+import Header from './../webpage/Header'
+import Footer from './../webpage/Footer'
 
 interface ProjectListEntry {
 	project_name: string;
 	id: string;
+	owner: string;
+	perm: string;
 };
 
 interface IProps {}
@@ -22,16 +26,6 @@ class ProjectsPage extends React.Component<IProps, IState> {
 	componentDidMount() {
 		document.title = "Projects - Projectory";
 
-		fetch("http://localhost:8080/users/user", { credentials: "include" }).then(response => {
-			if (response.status !== 200) {
-				window.location.replace("/login")
-			} else {
-				return response.json();
-			}
-		}).then(json => {
-			this.setState({ current_user: json.user });
-		});
-
 		fetch("http://localhost:8080/project/project_list", { credentials: "include" }).then(response => {
 			if (response.status !== 200) {
 				window.location.replace("/login")
@@ -44,38 +38,39 @@ class ProjectsPage extends React.Component<IProps, IState> {
 
 	}
 
-	logout() {
-		fetch("http://localhost:8080/auth/logout", {
-			method: 'POST',
-			credentials: "include"
-		}).then(response => {
-			window.location.replace("/");
-		});
-	}
-
 	render() {
 		return (
-			<main>
-				<h4>Current User: {this.state.current_user}</h4>
-				<Button variant="outline-primary" onClick={this.logout}>Log out</Button>
-				<h1>Projects:</h1>
-				<Table striped bordered hover>
-					<thead>
-						<tr>
-							<th>Project Name</th>
-							<th>Project ID</th>
-						</tr>
-					</thead>
-					<tbody>
-						{this.state.pl.map((p) =>
-							<tr key={"project-" + p.id}>
-								<td>{p.project_name}</td>
-								<td>{p.id}</td>
+			<>
+				<Header />
+				<main>
+					<h1>Projects:</h1>
+					<Table striped bordered hover>
+						<thead>
+							<tr>
+								<th>Project Name</th>
+								<th>Project ID</th>
+								<th>Project Owner</th>
+								<th>Permission</th>
 							</tr>
-						)}
-					</tbody>
-				</Table>
-			</main>
+						</thead>
+						<tbody>
+							{this.state.pl.map((p) =>
+								<tr key={"project-" + p.id}>
+									<td>
+										<Link to={"/projects/" + p.owner + "/" + p.id}>
+											{p.project_name}
+										</Link>
+									</td>
+									<td>{p.id}</td>
+									<td>{p.owner}</td>
+									<td>{p.perm}</td>
+								</tr>
+							)}
+						</tbody>
+					</Table>
+				</main>
+				<Footer />
+			</>
 		);
 	}
 }
