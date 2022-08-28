@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
 import Header from './../webpage/Header'
 import Footer from './../webpage/Footer'
+import Button from 'react-bootstrap/Button'
 
 interface ProjectListEntry {
 	project_name: string;
@@ -42,6 +43,7 @@ class ProjectsPage extends React.Component<IProps, IState> {
 		return (
 			<>
 				<Header />
+				<Button variant="outline-primary" onClick={() => { alert("Not implemented"); }}>Create a new project</Button>
 				<main>
 					<h1>Projects:</h1>
 					<Table striped bordered hover>
