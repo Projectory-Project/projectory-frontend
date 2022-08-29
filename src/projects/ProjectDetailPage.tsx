@@ -14,7 +14,9 @@ function ProjectDetailPage() {
 	const [current_perm, set_current_perm] = useState<string>("loading...");
 
 	useEffect(() => {
-		fetch("http://localhost:8080/projects/" + params.owner + "/" + params.project_id, { credentials: "include" }).then(response => {
+		fetch("http://localhost:8080/projects/" + params.owner + "/" + params.project_id, {
+			credentials: "include"
+		}).then(response => {
 			if (response.status !== 200) {
 				window.location.replace("/login")
 			} else {

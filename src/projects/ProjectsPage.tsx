@@ -27,7 +27,9 @@ class ProjectsPage extends React.Component<IProps, IState> {
 	componentDidMount() {
 		document.title = "Projects - Projectory";
 
-		fetch("http://localhost:8080/project/project_list", { credentials: "include" }).then(response => {
+		fetch("http://localhost:8080/project/project_list", {
+			credentials: "include"
+		}).then(response => {
 			if (response.status !== 200) {
 				window.location.replace("/login")
 			} else {

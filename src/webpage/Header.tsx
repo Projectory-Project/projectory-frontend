@@ -13,7 +13,9 @@ function logout() {
 function Header() {
 	const [current_user, set_current_user] = useState("loading...");
 	useEffect(() => {
-		fetch("http://localhost:8080/users/user", { credentials: "include" }).then(response => {
+		fetch("http://localhost:8080/users/user", {
+			credentials: "include"
+		}).then(response => {
 			if (response.status !== 200) {
 				window.location.replace("/login")
 			} else {
